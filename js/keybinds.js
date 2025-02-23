@@ -20,9 +20,16 @@ function getkeybind(keynum) {
     console.log(keynum);
     console.log(maxnum);
     keynum = Math.max(Math.min(maxnum, keynum), 1);
-    let message = document.getElementById("phrase" + String(keynum)).innerText;
+    let element = document.getElementById("phrase" + String(keynum));
+    let message = element.innerText;
+    element.parentElement.classList.add("active")
     console.log(copyphrase(message));
 }
+function removeclick(keynum) {
+    let element = document.getElementById("phrase" + String(keynum));
+    element.parentElement.classList.remove("active");
+}
+
 
 document.addEventListener('keydown', function(ev) {
     console.log(ev.code)
@@ -31,5 +38,8 @@ document.addEventListener('keydown', function(ev) {
     }
     
 })
-
-getkeybind(3);
+document.addEventListener('keyup', function(ev) {
+    if (keybinds[ev.code] != undefined && !ev.metaKey) {
+        removeclick(keybinds[ev.code])
+    }
+})
