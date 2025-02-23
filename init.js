@@ -14,6 +14,7 @@ window.onload = function(){
     }
     async function init() {
         fun("/js/keybinds.js")
+        fun("/js/menuhandler.js")
         console.log("all scripts loaded!")
     }
     init();

@@ -82,3 +82,43 @@ header .logo {
     background-repeat: no-repeat;
     background-size: contain;
 }
+header .menubutt {
+    background-image: url(/images/menu_arrow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+    position: absolute;
+    aspect-ratio: 1/1;
+    height: 5vh;
+    top: 2.5vh;
+    left: 2.5vh;
+    cursor: pointer;
+    rotate: 0deg;
+    transition: rotate 0.3s;
+}
+
+.menubutt.active {
+    rotate: 180deg;
+}
+header .menu {
+    min-width: 300px;
+    width: 30vw;
+    left: calc((-300px - 30vw));
+    top: calc(10vh + 2px);
+    height: 90vh;
+    background-color: black;
+    position: absolute;
+    transition: left 0.3s;
+    border-right: 2px white solid;
+}
+.menu.active {
+    left: 0;
+}
+.menu div {
+    width: 90%;
+    margin: 5%;
+    background-color: rgb(96, 96, 96);
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+}
