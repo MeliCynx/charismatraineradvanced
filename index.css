@@ -107,6 +107,26 @@ header .menu {
     transition: left 0.3s;
     border-right: 2px white solid;
 }
+
+header .quote {
+    right: 0;
+    position: absolute;
+    display: flex;
+    color: rgb(40, 40, 40);
+    top: 0;
+    height: 10vh;
+    line-height: 3vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-wrap: pretty;
+    width: 25vw;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: sans-serif;
+    cursor: default;
+}
+
 .menu.active {
     left: 0;
 }
@@ -140,6 +160,7 @@ header .menu {
     pointer-events: none;
     font-family: sans-serif;
     font-size: 20px;
+    user-select: none;
 }
 .keybinds .button {
     display: block;
@@ -180,6 +201,8 @@ header .menu {
     line-height: 0;
 
 }
+
+
 
 .button.active {
     left: 5px;
