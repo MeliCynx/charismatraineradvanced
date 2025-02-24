@@ -33,12 +33,26 @@ async function presskeybindbutton(num) {
     button.parentElement.classList.add("active");
     if (!waiting) {
         waiting = true;
+        let oldtext = button.innerHTML;
         button.innerHTML = "input key...";
         await waitforkeypress(num)
         let container = document.getElementById("currentbindcontainer" + String(num));
         console.log(container)
-        container.innerText == lastpressed.key;
-
+        if (!keybinds[lastpressed.code]) {
+            let text = lastpressed.code;
+            if (text.substring(0, 3) == "Key") {
+                text = text.replace("Key", '');
+                text = text.toLowerCase();
+            } else if (text.substring(0,5) == "Digit") {
+                text = text.replace("Digit", '');
+            }
+            container.innerText = text;
+            document.getElementById("bind" + String(num)).innerText = text;
+            setkeybind(Object.values(keybinds).indexOf(num), lastpressed.code);
+        }
+        button.innerText = oldtext;
+        waiting = false;
+        console.log(keybinds);
     }
 }
 
