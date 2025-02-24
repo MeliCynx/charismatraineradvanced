@@ -32,7 +32,6 @@ function removeclick(keynum) {
 
 
 document.addEventListener('keydown', function(ev) {
-    console.log(ev.code)
     if (keybinds[ev.code] != undefined && !ev.metaKey) {
         getkeybind(keybinds[ev.code]);
     }
