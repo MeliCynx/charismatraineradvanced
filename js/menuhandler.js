@@ -1,4 +1,12 @@
 let open = false;
+let menu_audio_down = [
+    new Audio("/sounds/down.mp3"),
+    new Audio("/sounds/down.mp3")
+]
+let menu_audio_up = [
+    new Audio("/sounds/up.mp3"),
+    new Audio("/sounds/up.mp3")
+]
 function togglemenu() {
     let button = document.getElementById("menubutt");
     let menu = document.getElementById("menu");
@@ -30,6 +38,12 @@ function waitforkeypress(buttonnum) {
 }
 async function presskeybindbutton(num) {
     let button = document.getElementById("keyb" + String(num));
+    for (x=0; x<menu_audio_down.length;x++) {
+        if (menu_audio_down[x].paused) {
+            menu_audio_down[x].play()
+            break
+        }
+    }
     button.parentElement.classList.add("active");
     if (!waiting) {
         waiting = true;
@@ -58,5 +72,11 @@ async function presskeybindbutton(num) {
 
 function unpresskeybindbutton(num) {
     let button = document.getElementById("keyb" + String(num));
+    for (x=0; x<menu_audio_up.length;x++) {
+        if (menu_audio_up[x].paused) {
+            menu_audio_up[x].play()
+            break
+        }
+    }
     button.parentElement.classList.remove("active")
 }

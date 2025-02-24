@@ -1,5 +1,15 @@
 const cookname_keybinds = "keybinds";
 let keybinds = JSON.parse(getCookie(cookname_keybinds));
+let audio_down = [
+    new Audio("/sounds/down.mp3"),
+    new Audio("/sounds/down.mp3"),
+    new Audio("/sounds/down.mp3")
+]
+let audio_up = [
+    new Audio("/sounds/up.mp3"),
+    new Audio("/sounds/up.mp3"),
+    new Audio("/sounds/up.mp3")
+]
 if (keybinds == null) {
     keybinds = {
         "Digit1": 1,
@@ -28,6 +38,12 @@ function getkeybind(keynum) {
     keynum = Math.max(Math.min(maxnum, keynum), 1);
     let element = document.getElementById("phrase" + String(keynum));
     let message = element.innerText;
+    for (x=0; x<audio_down.length;x++) {
+        if (audio_down[x].paused) {
+            audio_down[x].play()
+            break
+        }
+    }
     element.parentElement.classList.add("active")
     console.log(copyphrase(message));
 }
@@ -41,7 +57,15 @@ function setkeybind(keynum, new_key) {
 
 function removeclick(keynum) {
     let element = document.getElementById("phrase" + String(keynum));
-    element.parentElement.classList.remove("active");
+    if (element.parentElement.classList.contains("active")) {
+        for (x=0; x<audio_up.length;x++) {
+            if (audio_up[x].paused) {
+                audio_up[x].play()
+                break
+            }
+        }
+        element.parentElement.classList.remove("active");
+    }
 }
 
 
