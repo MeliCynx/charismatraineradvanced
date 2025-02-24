@@ -12,5 +12,9 @@ function getrandom(max) {
     return Math.floor(Math.random()*max)
 }
 
-let quotes = document.getElementById("quote")
-quotes.innerHTML = randomquotes[getrandom(randomquotes.length)]
+let quotes = document.getElementById("quote");
+quotes.innerHTML = randomquotes[getrandom(randomquotes.length)];
+let title = document.getElementById("title");
+if (getrandom(100) == 1) {
+    title.innerHTML = "Shark Tuah";
+}
