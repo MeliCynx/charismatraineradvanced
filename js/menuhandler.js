@@ -72,11 +72,13 @@ async function presskeybindbutton(num) {
 
 function unpresskeybindbutton(num) {
     let button = document.getElementById("keyb" + String(num));
-    for (x=0; x<menu_audio_up.length;x++) {
-        if (menu_audio_up[x].paused) {
-            menu_audio_up[x].play()
-            break
+    if (button.parentElement.classList.contains("active")) {
+        for (x=0; x<menu_audio_up.length;x++) {
+            if (menu_audio_up[x].paused) {
+                menu_audio_up[x].play()
+                break
+            }
         }
-    }
     button.parentElement.classList.remove("active")
+    }
 }
