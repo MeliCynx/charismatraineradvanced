@@ -13,7 +13,6 @@ window.onload = function(){
         });
     }
     async function init() {
-        await fun("/js/vercelanalytics.js");
         fun("/js/randomcontent.js");
         await fun("/js/cookieshandler.js");
         fun("/js/keybinds.js");
